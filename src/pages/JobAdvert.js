@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "semantic-ui-react";
 import JobAdvertService from "../services/jobAdvertService";
+import { Link } from "react-router-dom";
 
 const colors = ["olive"];
 export default function JobAdvert() {
@@ -18,10 +19,10 @@ export default function JobAdvert() {
         <Table color={color} key={color}>
           <Table.Header>
             <Table.Row>
+              <Table.HeaderCell>İlan </Table.HeaderCell>
               <Table.HeaderCell> İş pozisyonu </Table.HeaderCell>
               <Table.HeaderCell>İş sahibi</Table.HeaderCell>
               <Table.HeaderCell>Şehir </Table.HeaderCell>
-              <Table.HeaderCell>İlan </Table.HeaderCell>
               <Table.HeaderCell>Min ücret </Table.HeaderCell>
               <Table.HeaderCell>Max ücret </Table.HeaderCell>
             </Table.Row>
@@ -30,10 +31,10 @@ export default function JobAdvert() {
           <Table.Body>
             {jobadverts.map((jobadverts) => (
               <Table.Row key={jobadverts.id}>
+                <Table.Cell><Link to={`/jobAdvert/${jobadverts.id } `}>{jobadverts.job_advert_name}</Link></Table.Cell>
                 <Table.Cell>{jobadverts.jobPosition.position}</Table.Cell>
                 <Table.Cell>{jobadverts.employer.companyName}</Table.Cell>
                 <Table.Cell>{jobadverts.city.cityName}</Table.Cell>
-                <Table.Cell>{jobadverts.job_advert_name}</Table.Cell>
                 <Table.Cell>{jobadverts.salaryMin}</Table.Cell>
                 <Table.Cell>{jobadverts.salaryMax}</Table.Cell>
               </Table.Row>
